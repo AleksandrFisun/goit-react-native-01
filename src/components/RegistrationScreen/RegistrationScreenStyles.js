@@ -26,7 +26,8 @@ export const styles = StyleSheet.create({
     right: -12,
     width: 25,
     height: 25,
-    backgroundColor: 'none',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 16,
   },
   formWrapper: {
     display: 'flex',

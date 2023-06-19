@@ -19,18 +19,6 @@ const LoginInput = ({ keyboard, userLogIn }) => {
   const [keyboardStatus, setKeyboardStatus] = useState('hidden');
 
   useEffect(() => {
-    keyboard(keyboardStatus);
-  }, [keyboardStatus]);
-
-  useEffect(() => {
-    const data = {
-      email: email,
-      password: password,
-    };
-    userLogIn(data);
-  }, [email, password]);
-
-  useEffect(() => {
     const showSubscription = Keyboard.addListener('keyboardDidShow', () => {
       setKeyboardStatus('shown');
     });
@@ -46,6 +34,19 @@ const LoginInput = ({ keyboard, userLogIn }) => {
       hideSubscription.remove();
     };
   }, []);
+
+  useEffect(() => {
+    keyboard(keyboardStatus);
+  }, [keyboardStatus]);
+
+  useEffect(() => {
+    const data = {
+      email: email,
+      password: password,
+    };
+    userLogIn(data);
+  }, [email, password]);
+
   const handleToggleVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };

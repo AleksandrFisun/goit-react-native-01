@@ -1,13 +1,14 @@
 import { Pressable, Text, View } from 'react-native';
 import { styles } from './RegistrationButtonStyles';
+import { useNavigation } from '@react-navigation/native';
 const RegistrationButton = ({ userRegData }) => {
+  const navigation = useNavigation();
   const onPressSubmitRegistration = () => {
     if (login.length === 0 || email.length === 0 || password.length === 0) {
       alert('Заполните все поля');
       return;
     }
-    console.log('Registration', userRegData);
-    alert('Submit');
+    navigation.navigate('Home');
   };
   const { login, email, password } = userRegData;
 
@@ -20,12 +21,12 @@ const RegistrationButton = ({ userRegData }) => {
         <Text style={styles.buttonRegistrationsText}>Зареєстуватися</Text>
       </Pressable>
 
-      <Pressable
-        style={styles.buttonLogin}
-        // onPress={onPressLearnMore}
-      >
-        <Text style={styles.buttonLoginText}>Вже є акаунт? Увійти</Text>
-      </Pressable>
+      <View style={styles.textFooterWrapper}>
+        <Text style={styles.buttonLoginText}>Вже є акаунт?</Text>
+        <Pressable onPress={() => navigation.navigate('Login')}>
+          <Text style={styles.buttonLoginTextLink}>Увійти</Text>
+        </Pressable>
+      </View>
     </View>
   );
 };

@@ -7,12 +7,14 @@ import {
   ImageBackground,
   TouchableWithoutFeedback,
   Keyboard,
+  Image,
 } from 'react-native';
 import { styles } from './RegistrationScreenStyles';
 import RegistrationInput from './RegistrationInput/RegistrationInput';
 import RegistrationButton from './RegistrationButton/RegistrationButton';
 import Icon from 'react-native-vector-icons/AntDesign';
 import image from '../../../assets/img/HomeBG.jpg';
+import userImg from '../../../assets/img/User.jpg';
 
 const RegistrationScreen = () => {
   const [keyboardStatus, setKeyboardStatus] = useState('hidden');
@@ -22,10 +24,12 @@ const RegistrationScreen = () => {
     setKeyboardStatus(e);
   };
 
-  const handleChoosePhoto = () => {
-    alert('Click photo...');
+  const handleChoosePhotoPlus = () => {
+    setPhoto(userImg);
   };
-
+  const handleChoosePhotoMinus = () => {
+    setPhoto(null);
+  };
   return (
     <>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -43,10 +47,20 @@ const RegistrationScreen = () => {
             <View style={styles.photoWrapper}>
               <View style={styles.photoUser}>
                 {photo ? (
-                  <Image source={{ uri: photo }} style={styles.photoUser} />
+                  <Image source={photo} style={styles.photoUser} />
+                ) : (
+                  <View style={styles.photoUser}></View>
+                )}
+                {photo ? (
+                  <TouchableOpacity
+                    onPress={handleChoosePhotoMinus}
+                    style={styles.photoUserButton}
+                  >
+                    <Icon name="closecircleo" size={25} color="#E8E8E8" />
+                  </TouchableOpacity>
                 ) : (
                   <TouchableOpacity
-                    onPress={handleChoosePhoto}
+                    onPress={handleChoosePhotoPlus}
                     style={styles.photoUserButton}
                   >
                     <Icon name="pluscircleo" size={25} color="#FF6C00" />

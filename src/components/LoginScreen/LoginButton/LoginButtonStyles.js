@@ -23,6 +23,8 @@ export const styles = StyleSheet.create({
     color: '#FFFFFF',
   },
   buttonReg: {
+    display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 6,
