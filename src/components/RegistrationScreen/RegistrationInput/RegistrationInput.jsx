@@ -21,9 +21,7 @@ const RegistrationInput = ({ keyboard, userReg }) => {
     });
     const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
       setKeyboardStatus('hidden');
-      if (password) {
-        setPasswordVisible(true);
-      }
+      setPasswordVisible(true);
     });
 
     return () => {

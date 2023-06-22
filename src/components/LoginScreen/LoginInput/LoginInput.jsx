@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import {
   TextInput,
-  View,
   Keyboard,
   TouchableOpacity,
   Text,
+  View,
 } from 'react-native';
 import { styles } from './LoginInputStyles';
 
@@ -24,9 +24,7 @@ const LoginInput = ({ keyboard, userLogIn }) => {
     });
     const hideSubscription = Keyboard.addListener('keyboardDidHide', () => {
       setKeyboardStatus('hidden');
-      if (password) {
-        setPasswordVisible(true);
-      }
+      setPasswordVisible(true);
     });
 
     return () => {

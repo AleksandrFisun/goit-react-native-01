@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   ImageBackground,
   View,
@@ -16,6 +17,14 @@ import userImg from '../../assets/img/User.jpg';
 import { styles } from './ProfileScreenStyles';
 
 const ProfileScreen = () => {
+  const navigation = useNavigation();
+
+  const onPressCommentsPost = () => {
+    navigation.navigate('Comments');
+  };
+  const onPressLocationPost = () => {
+    navigation.navigate('Map');
+  };
   const handleChoosePhoto = () => {
     alert('Click photo...');
   };
@@ -59,7 +68,7 @@ const ProfileScreen = () => {
               <View style={styles.cardPostFooter}>
                 <View style={styles.cardPostGrade}>
                   <TouchableOpacity
-                    onPress={handleChoosePhoto}
+                    onPress={onPressCommentsPost}
                     style={[styles.cardPostGradeButton, { marginRight: 30 }]}
                   >
                     <IconFeather
@@ -84,7 +93,7 @@ const ProfileScreen = () => {
                 </View>
 
                 <TouchableOpacity
-                  onPress={handleChoosePhoto}
+                  onPress={onPressLocationPost}
                   style={styles.cardPostLocationButton}
                 >
                   <IconFeather

@@ -3,12 +3,14 @@ import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import ButtonBack from './src/components/ButtonBack/ButtonBack';
+import { styles } from './styles';
 
 import RegistrationScreen from './src/components/RegistrationScreen/RegistrationScreen';
 import LoginScreen from './src/components/LoginScreen/LoginScreen';
 import Home from './src/Home/Home';
-
-import { styles } from './AppStyles';
+import Map from './src/MapScreen/MapScreen';
+import Comments from './src/CommentsScreen/CommentsScreen';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -39,6 +41,26 @@ export default function App() {
           name="Home"
           component={Home}
           options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Comments"
+          component={Comments}
+          options={{
+            title: 'Коментарі',
+            headerStyle: styles.wrapperPostHeader,
+            headerTitleStyle: styles.titlePostHeader,
+            headerLeft: () => <ButtonBack />,
+          }}
+        />
+        <MainStack.Screen
+          name="Map"
+          component={Map}
+          options={{
+            title: 'Мапа',
+            headerStyle: styles.wrapperPostHeader,
+            headerTitleStyle: styles.titlePostHeader,
+            headerLeft: () => <ButtonBack />,
+          }}
         />
       </MainStack.Navigator>
       <StatusBar style="auto" />

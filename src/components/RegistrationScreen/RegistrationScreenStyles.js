@@ -11,7 +11,6 @@ export const styles = StyleSheet.create({
     width: 120,
   },
   photoUser: {
-    textAlign: 'center',
     position: 'absolute',
     bottom: 0,
     left: 0,
