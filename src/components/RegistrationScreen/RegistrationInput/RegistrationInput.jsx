@@ -8,10 +8,7 @@ import {
 } from 'react-native';
 import { styles } from './RegistrationInputStyles';
 
-const RegistrationInput = ({ keyboard, userReg }) => {
-  const [login, setLogin] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const RegistrationInput = ({ keyboard, onChange, email, password, login }) => {
   const [passwordVisible, setPasswordVisible] = useState(true);
   const [keyboardStatus, setKeyboardStatus] = useState('hidden');
 
@@ -34,15 +31,6 @@ const RegistrationInput = ({ keyboard, userReg }) => {
     keyboard(keyboardStatus);
   }, [keyboardStatus]);
 
-  useEffect(() => {
-    const data = {
-      login: login,
-      email: email,
-      password: password,
-    };
-    userReg(data);
-  }, [login, email, password]);
-
   const handleToggleVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -51,29 +39,32 @@ const RegistrationInput = ({ keyboard, userReg }) => {
     <View style={styles.inputWrapper(keyboardStatus)}>
       <View style={styles.inputContainer}>
         <TextInput
+          name="login"
           placeholder="Логін"
           inputMode="text"
           style={styles.input}
-          onChangeText={setLogin}
+          onChangeText={e => onChange({ value: e, name: 'login' })}
           value={login}
         />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
+          name="email"
           placeholder="Адреса електронної пошти"
           inputMode="email"
           style={styles.input}
-          onChangeText={setEmail}
+          onChangeText={e => onChange({ value: e, name: 'email' })}
           value={email}
         />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
+          name="password"
           placeholder="Пароль"
           inputMode="text"
           style={styles.inputPass}
           secureTextEntry={passwordVisible}
-          onChangeText={setPassword}
+          onChangeText={e => onChange({ value: e, name: 'password' })}
           value={password}
         />
         <TouchableOpacity

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { styles } from './LoginInputStyles';
 import {
   TextInput,
   Keyboard,
@@ -6,11 +7,8 @@ import {
   Text,
   View,
 } from 'react-native';
-import { styles } from './LoginInputStyles';
 
-const LoginInput = ({ keyboard, userLogIn }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const LoginInput = ({ keyboard, onChange, email, password }) => {
   const [passwordVisible, setPasswordVisible] = useState(true);
   const [focusStyle, setFocusStyle] = useState({
     name: '',
@@ -37,14 +35,6 @@ const LoginInput = ({ keyboard, userLogIn }) => {
     keyboard(keyboardStatus);
   }, [keyboardStatus]);
 
-  useEffect(() => {
-    const data = {
-      email: email,
-      password: password,
-    };
-    userLogIn(data);
-  }, [email, password]);
-
   const handleToggleVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
@@ -59,6 +49,7 @@ const LoginInput = ({ keyboard, userLogIn }) => {
     <View style={styles.inputWrapper(keyboardStatus)}>
       <View style={styles.inputContainer}>
         <TextInput
+          name="email"
           placeholder="Адреса електронної пошти"
           inputMode="email"
           value={email}
@@ -68,11 +59,12 @@ const LoginInput = ({ keyboard, userLogIn }) => {
           ]}
           onFocus={() => customOnFocus('email')}
           onBlur={() => customOnBlur()}
-          onChangeText={setEmail}
+          onChangeText={e => onChange({ value: e, name: 'email' })}
         />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
+          name="password"
           placeholder="Пароль"
           inputMode="text"
           value={password}
@@ -83,7 +75,7 @@ const LoginInput = ({ keyboard, userLogIn }) => {
           ]}
           onFocus={() => customOnFocus('password')}
           onBlur={() => customOnBlur()}
-          onChangeText={setPassword}
+          onChangeText={e => onChange({ value: e, name: 'password' })}
         />
         <TouchableOpacity
           onPress={handleToggleVisibility}
