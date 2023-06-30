@@ -11,7 +11,6 @@ import React, { useEffect } from 'react';
 import IconFeather from 'react-native-vector-icons/Feather';
 import styles from './PostsScreenStyles';
 import authOperations from '../../redux/auth/authOperations';
-import { onUserReg } from '../../redux/auth/authSlice';
 import fireBaseOperations from '../../redux/firestore/fireBaseOperations';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';

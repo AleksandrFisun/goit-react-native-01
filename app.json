@@ -4,14 +4,13 @@
     "slug": "project-ReactNative",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-
     "assetBundlePatterns": ["**/*"],
     "plugins": [
       [
@@ -38,16 +37,36 @@
       ]
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photos.",
+        "NSPhotoLibraryAddUsageDescription": "Allow $(PRODUCT_NAME) to save photos."
+      },
+      "bundleIdentifier": "com.aleksandr.fisun.projectReactNative"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_MEDIA_LOCATION",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.FOREGROUND_SERVICE"
+      ],
+      "package": "com.aleksandr.fisun.projectReactNative"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": ""
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2f35f10e-d639-43db-8f34-12fb7d2048d8"
+      }
     }
   }
 }
