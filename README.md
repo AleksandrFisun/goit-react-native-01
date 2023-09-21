@@ -1,2 +1,2 @@
-![Home Page](./assets/Simulator1.png) ![Home Page](./assets/Simulator4.png)
-![Home Page](./assets/Simulator2.png) ![Home Page](./assets/Simulator3.png)
+![HomePageS](./assets/Simulator1.png) ![HomePageS](./assets/Simulator4.png)
+![HomePageS](./assets/Simulator2.png) ![HomePageS](./assets/Simulator3.png)

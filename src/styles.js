@@ -12,4 +12,8 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     letterSpacing: -0.41,
   },
+  HomePageS: {
+    width: 200,
+    height: 200,
+  },
 });
